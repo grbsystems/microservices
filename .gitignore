@@ -328,3 +328,13 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# Gradle temp files
+.gradle/
+
+# Maven temp files
+.mvn/
+target/
+
+# Java files
+*.class
