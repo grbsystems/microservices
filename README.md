@@ -1,20 +1,29 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+Microservice examples based on some articles from Medium
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+[Medium](https://medium.com/@marcus.eisele/implementing-a-microservice-architecture-with-spring-boot-intro-cdb6ad16806c)
+
+
+
+# Oddities
+Note that with spring boot 2.0 and above the management endpoints have changed and also they need 
+to be exposed by configuration.  See the application.yml file in the counter service as an example,
+although that is really a broad brush exposure of the interfaces.
+
+Also the refresh endpoint has moved to actuator, so the curl call for the refresh call is now:
+
+curl -X POST localhost:8080/actuator/refresh -d {} -H "Content-Type: application/json"
+
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+At the root
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+mvn clean package
+docker-compose up
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Key URLS
+The counter service 
+-   [http://localhost:8080/count](http://localhost:8080/count)
+
+The config service
+-   [http://localhost:8888/counterservice/default](http://localhost:8888/counterservice/default)
