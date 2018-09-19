@@ -9,5 +9,6 @@
   <modules>
     <module>counterservice</module>
     <module>configurationservice</module>
+    <module>discoveryservice</module>
   </modules>
 </project>
