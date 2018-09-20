@@ -41,5 +41,11 @@ a bootstrap.yml file.  See counterservoice for an example.
 
 Also see that file for an example of how the discovery service endpoint is set up.
 
+# Part five notes
+
+The set of 3 services can be started from docker-compose and the counterservice will wait until the 
+configuration service is available and running.
+
+
 
 
