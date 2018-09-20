@@ -338,3 +338,8 @@ target/
 
 # Java files
 *.class
+
+# Misc
+.project
+.classpath
+.settings/

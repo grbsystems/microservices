@@ -27,3 +27,25 @@ The counter service
 
 The config service
 -   [http://localhost:8888/counterservice/default](http://localhost:8888/counterservice/default)
+
+# Useful Notes during Development
+
+The medium article is for a 1.x.x version of Spring Boot.  With the 2.x.x versions dependencies have changed a bit, as well as some
+of the techniques used.  This has been updated accordingly.  I have found the easiest way to get the 
+right dependencies in is to go to the spring boot initializer and regenerate the pom.xml file for whatever
+spring boot version you want.  Mix and match often causes dependency miskatch errors with ClassNotFound on some
+abstract classes.  Score +1 for much better .NET assembly versioning there!
+
+Also, service discovery does not allow you to automagically find the config service.  That needs to reside in 
+a bootstrap.yml file.  See counterservoice for an example.
+
+Also see that file for an example of how the discovery service endpoint is set up.
+
+# Part five notes
+
+The set of 3 services can be started from docker-compose and the counterservice will wait until the 
+configuration service is available and running.
+
+
+
+

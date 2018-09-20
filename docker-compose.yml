@@ -3,9 +3,19 @@ services:
   configurationservice:
     build: configurationservice
     ports: 
-      - "8888:8888"
+      - "9000:9000"
+    depends_on:
+      - "discoveryservice"  
 
   counterservice:
     build: counterservice
     ports: 
       - "8080:8080"
+    depends_on:
+      - "discoveryservice"  
+      - "configurationservice"
+
+  discoveryservice:
+    build: discoveryservice
+    ports: 
+      - "8761:8761"
