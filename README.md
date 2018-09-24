@@ -46,6 +46,12 @@ Also see that file for an example of how the discovery service endpoint is set u
 The set of 3 services can be started from docker-compose and the counterservice will wait until the 
 configuration service is available and running.
 
+# Part six notes
+
+The url for the counter service via the gateway is 
+[http://localhost:9999/api/counterservice/count](http://localhost:9999/api/counterservice/count)
+pending any other configuration. 
+
 
 
 
