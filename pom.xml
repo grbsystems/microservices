@@ -8,8 +8,8 @@
   
   <modules>
     <module>counterservice</module>
-    <module>configurationservice</module>
+   <!-- <module>configurationservice</module>
     <module>discoveryservice</module>
-    <module>gatewayService</module>
+    <module>gatewayService</module> -->
   </modules>
 </project>
