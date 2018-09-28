@@ -8,11 +8,46 @@
   <version>1.0.0</version>
   <packaging>pom</packaging>
   
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
   <modules>
-    <module>counterservice</module>
     <module>configurationservice</module>
+<!-->    <module>counterservice</module>
     <module>discoveryservice</module>
-    <module>gatewayService</module>
+    <module>gatewayService</module> -->
+    <module>testing</module>
   </modules>
-  
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.7.8</version>
+            <executions>
+                <execution>
+                    <id>prepare-agent</id>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+  </build>
 </project>
