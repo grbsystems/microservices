@@ -13,6 +13,9 @@ public class ConfigurationserviceApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		Foo foo = new Foo();
+
+		foo.Add(4, 6);
 	}
 
 }
