@@ -17,9 +17,9 @@
 
   <modules>
     <module>configurationservice</module>
-<!-->    <module>counterservice</module>
+    <module>counterservice</module>
     <module>discoveryservice</module>
-    <module>gatewayService</module> -->
+    <module>gatewayService</module>
     <module>testing</module>
   </modules>
 
