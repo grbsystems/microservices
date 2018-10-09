@@ -1,28 +1,32 @@
 version: '3'
 services:
+  discoveryservice:
+    image: proget.euleraerospace.com/docker-private/library/discoveryservice:latest
+    ports: 
+      - "8761:8761"
+
   configurationservice:
-    image: proget.euleraerospace.com/docker-private/library/springboot_configurationservice:latest
+    image: proget.euleraerospace.com/docker-private/library/configurationservice:latest  # goes to local registry
     ports: 
       - "9000:9000"
     depends_on:
       - "discoveryservice"  
 
-  counterservice:
-    image: proget.euleraerospace.com/docker-private/library/springboot_counterservice:latest
+  gatewayservice:
+    image: proget.euleraerospace.com/docker-private/library/gatewayservice:latest
     ports: 
       - "8080:8080"
     depends_on:
       - "discoveryservice"  
       - "configurationservice"
 
-  discoveryservice:
-    image: proget.euleraerospace.com/docker-private/library/springboot_discoveryservice:latest
-    ports: 
-      - "8761:8761"
-  
-  gatewayservice:
-    image: proget.euleraerospace.com/docker-private/library/springboot_gatewayservice:latest
+  counterservice:
+    image: proget.euleraerospace.com/docker-private/library/counterservice:latest
     ports: 
       - "9999:9999"
     depends_on:
       - "discoveryservice"  
+      - "gatewayservice"
+      - "configurationservice"
+  
+  

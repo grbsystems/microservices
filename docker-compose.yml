@@ -2,13 +2,13 @@ version: '3'
 services:
   discoveryservice:
     build: discoveryservice
-    image: proget.euleraerospace.com/docker-private/discoveryservice
+    image: proget.euleraerospace.com/docker-private/library/discoveryservice:latest
     ports: 
       - "8761:8761"
 
   configurationservice:
     build: configurationservice
-    image: proget.euleraerospace.com/docker-private/configurationservice  # goes to local registry
+    image: proget.euleraerospace.com/docker-private/library/configurationservice:latest  # goes to local registry
     ports: 
       - "9000:9000"
     depends_on:
@@ -16,7 +16,7 @@ services:
 
   gatewayservice:
     build: gatewayservice
-    image: proget.euleraerospace.com/docker-private/gatewayservice
+    image: proget.euleraerospace.com/docker-private/library/gatewayservice:latest
     ports: 
       - "8080:8080"
     depends_on:
@@ -25,9 +25,9 @@ services:
 
   counterservice:
     build: counterservice
-    image: proget.euleraerospace.com/docker-private/counterservice
+    image: proget.euleraerospace.com/docker-private/library/counterservice:latest
     ports: 
-      - "9999:9999"
+      - "8000:8000"
     depends_on:
       - "discoveryservice"  
       - "gatewayservice"
