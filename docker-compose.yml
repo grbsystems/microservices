@@ -1,5 +1,11 @@
 version: '3'
 services:
+  discoveryservice:
+    build: discoveryservice
+    image: proget.euleraerospace.com/docker-private/discoveryservice
+    ports: 
+      - "8761:8761"
+
   configurationservice:
     build: configurationservice
     image: proget.euleraerospace.com/docker-private/configurationservice  # goes to local registry
@@ -8,25 +14,23 @@ services:
     depends_on:
       - "discoveryservice"  
 
-  counterservice:
-    build: counterservice
-    image: proget.euleraerospace.com/docker-private/counterservice
+  gatewayservice:
+    build: gatewayservice
+    image: proget.euleraerospace.com/docker-private/gatewayservice
     ports: 
       - "8080:8080"
     depends_on:
       - "discoveryservice"  
       - "configurationservice"
 
-  discoveryservice:
-    build: discoveryservice
-    image: proget.euleraerospace.com/docker-private/discoveryservice
-    ports: 
-      - "8761:8761"
-  
-  gatewayservice:
-    build: gatewayService
-    image: proget.euleraerospace.com/docker-private/gatewayService
+  counterservice:
+    build: counterservice
+    image: proget.euleraerospace.com/docker-private/counterservice
     ports: 
       - "9999:9999"
     depends_on:
       - "discoveryservice"  
+      - "gatewayservice"
+      - "configurationservice"
+  
+  

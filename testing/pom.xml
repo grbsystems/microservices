@@ -35,7 +35,7 @@
         </dependency>
         <dependency>
             <groupId>com.leidos.springboot</groupId>
-            <artifactId>gatewayService</artifactId>
+            <artifactId>gatewayservice</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

@@ -19,7 +19,7 @@
     <module>configurationservice</module>
     <module>counterservice</module>
     <module>discoveryservice</module>
-    <module>gatewayService</module>
+    <module>gatewayservice</module>
     <module>testing</module>
   </modules>
 
