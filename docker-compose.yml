@@ -2,6 +2,7 @@ version: '3'
 services:
   configurationservice:
     build: configurationservice
+    image: proget.euleraerospace.com/docker-private/configurationservice  # goes to local registry
     ports: 
       - "9000:9000"
     depends_on:
@@ -9,6 +10,7 @@ services:
 
   counterservice:
     build: counterservice
+    image: proget.euleraerospace.com/docker-private/counterservice
     ports: 
       - "8080:8080"
     depends_on:
@@ -17,11 +19,13 @@ services:
 
   discoveryservice:
     build: discoveryservice
+    image: proget.euleraerospace.com/docker-private/discoveryservice
     ports: 
       - "8761:8761"
   
   gatewayservice:
     build: gatewayService
+    image: proget.euleraerospace.com/docker-private/gatewayService
     ports: 
       - "9999:9999"
     depends_on:
