@@ -6,7 +6,7 @@ services:
       - "8761:8761"
 
   configurationservice:
-    image: proget.euleraerospace.com/docker-private/library/configurationservice:latest  # goes to local registry
+    image: proget.euleraerospace.com/docker-private/library/configurationservice:latest  
     ports: 
       - "9000:9000"
     depends_on:
@@ -23,7 +23,7 @@ services:
   counterservice:
     image: proget.euleraerospace.com/docker-private/library/counterservice:latest
     ports: 
-      - "9999:9999"
+      - "8000:8000"
     depends_on:
       - "discoveryservice"  
       - "gatewayservice"
