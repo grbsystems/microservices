@@ -12,7 +12,7 @@ although that is really a broad brush exposure of the interfaces.
 
 Also the refresh endpoint has moved to actuator, so the curl call for the refresh call is now:
 
-curl -X POST localhost:8080/actuator/refresh -d {} -H "Content-Type: application/json"
+curl -X POST localhost:8000/actuator/refresh -d {} -H "Content-Type: application/json"
 
 
 # Build and Test
@@ -23,10 +23,10 @@ docker-compose up
 
 # Key URLS
 The counter service 
--   [http://localhost:8080/count](http://localhost:8080/count)
+-   [http://localhost:8000/count](http://localhost:8000/count)
 
 The config service
--   [http://localhost:8888/counterservice/default](http://localhost:8888/counterservice/default)
+-   [http://localhost:9000/counterservice/default](http://localhost:9000/counterservice/default)
 
 # Useful Notes during Development
 
