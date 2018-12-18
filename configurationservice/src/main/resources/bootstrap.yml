@@ -2,7 +2,8 @@ spring:
   application:
     name: "config"
 
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://discoveryservice:8761/eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discoveryservice:8761/eureka
+#      defaultZone: http://localhost:8761/eureka

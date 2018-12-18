@@ -1,4 +1,9 @@
 FROM openjdk:8-jdk-alpine
+
+RUN addgroup -S appgroup
+RUN adduser -S appuser -G appgroup
+USER appuser
+
 VOLUME /tmp
 ADD target/counterservice-0.0.1-SNAPSHOT.jar app.jar
 ENV JAVA_OPTS="-Xms16m -Xmx64m"

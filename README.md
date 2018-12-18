@@ -37,7 +37,7 @@ spring boot version you want.  Mix and match often causes dependency miskatch er
 abstract classes.  Score +1 for much better .NET assembly versioning there!
 
 Also, service discovery does not allow you to automagically find the config service.  That needs to reside in 
-a bootstrap.yml file.  See counterservoice for an example.
+a bootstrap.yml file.  See counterservice for an example.
 
 Also see that file for an example of how the discovery service endpoint is set up.
 
@@ -49,8 +49,18 @@ configuration service is available and running.
 # Part six notes
 
 The url for the counter service via the gateway is 
-[http://localhost:9999/api/counterservice/count](http://localhost:9999/api/counterservice/count)
-pending any other configuration. 
+[http://localhost:8080/api/cs/count](http://localhost:8080/api/cs/count)
+
+The cs prefix is specified by the lines:
+
+    zuul.ignored-services=*
+    zuul.routes.counter.path=/cs/**
+    zuul.routes.counter.serviceId=counterservice
+
+Which override the defaults for the service name.  The API prefix come from the line:
+
+    zuul.prefix=/api
+
 
 
 
