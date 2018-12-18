@@ -9,27 +9,27 @@ services:
   configurationservice:
     build: configurationservice
     image: ${REGISTRY}configurationservice:${TAG}
-    ports: 
+    ports:
       - "9000:9000"
     depends_on:
-      - "discoveryservice"  
+      - "discoveryservice"
 
   gatewayservice:
     build: gatewayservice
     image: ${REGISTRY}gatewayservice:${TAG}
-    ports: 
+    ports:
       - "8080:8080"
     depends_on:
-      - "discoveryservice"  
+      - "discoveryservice"
       - "configurationservice"
 
   counterservice:
     build: counterservice
     image: ${REGISTRY}counterservice:${TAG}
-    ports: 
+    ports:
       - "8000:8000"
     depends_on:
-      - "discoveryservice"  
+      - "discoveryservice"
       - "gatewayservice"
       - "configurationservice"
   
