@@ -2,13 +2,13 @@ version: '3'
 services:
   discoveryservice:
     build: discoveryservice
-    image: ${REGISTRY}discoveryservice:${TAG}
+    image: ${REGISTRY}discoveryservice${TAG}
     ports: 
       - "8761:8761"
 
   configurationservice:
     build: configurationservice
-    image: ${REGISTRY}configurationservice:${TAG}
+    image: ${REGISTRY}configurationservice${TAG}
     ports:
       - "9000:9000"
     depends_on:
@@ -16,7 +16,7 @@ services:
 
   gatewayservice:
     build: gatewayservice
-    image: ${REGISTRY}gatewayservice:${TAG}
+    image: ${REGISTRY}gatewayservice${TAG}
     ports:
       - "8080:8080"
     depends_on:
@@ -25,7 +25,7 @@ services:
 
   counterservice:
     build: counterservice
-    image: ${REGISTRY}counterservice:${TAG}
+    image: ${REGISTRY}counterservice${TAG}
     ports:
       - "8000:8000"
     depends_on:
