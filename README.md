@@ -41,12 +41,12 @@ a bootstrap.yml file.  See counterservice for an example.
 
 Also see that file for an example of how the discovery service endpoint is set up.
 
-# Part five notes
+# Starting Services
 
 The set of 3 services can be started from docker-compose and the counterservice will wait until the 
 configuration service is available and running.
 
-# Part six notes
+# Accessing services via the gateway
 
 The url for the counter service via the gateway is 
 [http://localhost:8080/gateway/counterservice/count](http://localhost:8080/gateway/counterservice/count)
@@ -64,7 +64,7 @@ Which overrides the defaults for the service name.  The gateway prefix comes fro
 
     zuul.prefix=/gateway
     
-# Part seven notes
+# .NET Core/Standard service
 
 In the original article there is no part seven.  I wanted to add a .NET core service using steeltoe.  The result is 
 steeltoeboot, which is an amalgam of some sample code.  It follows broadly the same pattern as the 
