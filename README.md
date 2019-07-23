@@ -33,7 +33,7 @@ The config service
 The medium article is for a 1.x.x version of Spring Boot.  With the 2.x.x versions dependencies have changed a bit, as well as some
 of the techniques used.  This has been updated accordingly.  I have found the easiest way to get the 
 right dependencies in is to go to the spring boot initializer and regenerate the pom.xml file for whatever
-spring boot version you want.  Mix and match often causes dependency miskatch errors with ClassNotFound on some
+spring boot version you want.  Mix and match often causes dependency mismatch errors with ClassNotFound on some
 abstract classes.  Score +1 for much better .NET assembly versioning there!
 
 Also, service discovery does not allow you to automagically find the config service.  That needs to reside in 
@@ -49,17 +49,46 @@ configuration service is available and running.
 # Part six notes
 
 The url for the counter service via the gateway is 
-[http://localhost:8080/api/cs/count](http://localhost:8080/api/cs/count)
+[http://localhost:8080/gateway/counterservice/count](http://localhost:8080/gateway/counterservice/count)
 
-The cs prefix is specified by the lines:
+You can override the service names in the zuul config file.  You probably don't want to go this, but it can be useful 
+when you have name conflicts.
+
+To only allow access to the counter service using a cs prefix. 
 
     zuul.ignored-services=*
     zuul.routes.counter.path=/cs/**
     zuul.routes.counter.serviceId=counterservice
 
-Which override the defaults for the service name.  The API prefix come from the line:
+Which overrides the defaults for the service name.  The gateway prefix comes from the line:
 
-    zuul.prefix=/api
+    zuul.prefix=/gateway
+    
+# Part seven notes
+
+In the original article there is no part seven.  I wanted to add a .NET core service using steeltoe.  The result is 
+steeltoeboot, which is an amalgam of some sample code.  It follows broadly the same pattern as the 
+java code, but with a couple of gotchas.  
+
+Configuration is done in json, not yaml, but the structure is identical.  Also, it seems steeltoe does not do as good 
+a job of automagically picking up the hostname and port.  This can lead to some funky route filtering
+issues in zuul.  The instance seetings need to be called out in more detail in the appsettings.json file. There may be 
+other, better, ways to do this, but at least this works for a quick sample app.
+
+The service returns the 2 values in the configuration file on the 
+[http://localhost:8080/gateway/steeltoeboot/api/values](http://localhost:8080/gateway/steeltoeboot/api/values) endpoint,
+or on the [http://localhost:8080/gateway/steeltoeboot/api/values](http://localhost:8080/gateway/steeltoeboot/api/values) 
+endpoint if you are bypassing the gateway and just running locally.   
+
+I would note that here is no docker image for the .NET code as yet - this will follow soon.
+
+# Running in Docker considerations
+
+There are a few tweaks to setting and config when running in docker that are related to effective use of the docker 
+network.  Not that you can avoid using the docker network and just connect to the local network, but that isn't how
+containers typically get deployed.
+
+These gerally all related to service discovery and communication. 
 
 
 

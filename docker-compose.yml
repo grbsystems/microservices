@@ -14,23 +14,23 @@ services:
     depends_on:
       - "discoveryservice"
 
-  gatewayservice:
-    build: gatewayservice
-    image: ${REGISTRY}gatewayservice${TAG}
-    ports:
-      - "8080:8080"
-    depends_on:
-      - "discoveryservice"
-      - "configurationservice"
+  #gatewayservice:
+  #  build: gatewayservice
+  #  image: ${REGISTRY}gatewayservice${TAG}
+  #  ports:
+  #    - "8080:8080"
+  #  depends_on:
+  #    - "discoveryservice"
+  #    - "configurationservice"
 
-  counterservice:
-    build: counterservice
-    image: ${REGISTRY}counterservice${TAG}
-    ports:
-      - "8000:8000"
-    depends_on:
-      - "discoveryservice"
-      - "gatewayservice"
-      - "configurationservice"
+  #counterservice:
+  #  build: counterservice
+  #  image: ${REGISTRY}counterservice${TAG}
+  #  ports:
+  #    - "8000:8000"
+  #  depends_on:
+  #    - "discoveryservice"
+  #    - "gatewayservice"
+  #    - "configurationservice"
   
   
