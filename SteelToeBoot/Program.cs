@@ -23,7 +23,7 @@ namespace SteelToeBoot
                 .ConfigureAppConfiguration((webHostBuilderContext, configurationBuilder) => {
                     
                     var hostingEnvironment = webHostBuilderContext.HostingEnvironment;
-                    configurationBuilder.AddConfigServer(hostingEnvironment.EnvironmentName);
+                    //configurationBuilder.AddConfigServer(hostingEnvironment.EnvironmentName);
                 })
                 .UseStartup<Startup>();
     }

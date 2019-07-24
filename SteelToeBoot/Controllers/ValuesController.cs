@@ -16,7 +16,12 @@ namespace SteelToeBoot.Controllers
         
         public ValuesController(IOptions<FetcherOptions> myOptions)
         {
-            MyOptions = myOptions.Value;
+            MyOptions = new FetcherOptions
+            {
+                BaseDataUri = "Hello",
+                FetchInterval = new TimeSpan(0, 1, 0, 0)
+            };
+            //MyOptions = myOptions.Value;
         }
 
         // GET api/values

@@ -19,6 +19,7 @@ curl -X POST localhost:8000/actuator/refresh -d {} -H "Content-Type: application
 At the root
 
 mvn clean package
+
 docker-compose up
 
 # Key URLS
@@ -70,9 +71,8 @@ In the original article there is no part seven.  I wanted to add a .NET core ser
 steeltoeboot, which is an amalgam of some sample code.  It follows broadly the same pattern as the 
 java code, but with a couple of gotchas.  
 
-Configuration is done in json, not yaml, but the structure is identical.  Also, it seems steeltoe does not do as good 
-a job of automagically picking up the hostname and port.  This can lead to some funky route filtering
-issues in zuul.  The instance seetings need to be called out in more detail in the appsettings.json file. There may be 
+It seems steeltoe does not do as good a job of automagically picking up the hostname and port.  This can lead to some funky route filtering
+issues in zuul.  The instance settings need to be called out in more detail in the appsettings.json file. There may be 
 other, better, ways to do this, but at least this works for a quick sample app.
 
 The service returns the 2 values in the configuration file on the 
@@ -88,7 +88,7 @@ There are a few tweaks to setting and config when running in docker that are rel
 network.  Not that you can avoid using the docker network and just connect to the local network, but that isn't how
 containers typically get deployed.
 
-These gerally all related to service discovery and communication. 
+These generally all related to service discovery and communication. 
 
 
 
