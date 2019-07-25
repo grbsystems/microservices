@@ -13,6 +13,9 @@ namespace SteelToeBoot
 {
     public class Program
     {
+        static LoggerFactory logFactory = new LoggerFactory();
+
+
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
@@ -21,9 +24,10 @@ namespace SteelToeBoot
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((webHostBuilderContext, configurationBuilder) => {
-                    
+                    logFactory.AddConsole(minLevel: LogLevel.Debug);
+
                     var hostingEnvironment = webHostBuilderContext.HostingEnvironment;
-                    //configurationBuilder.AddConfigServer(hostingEnvironment.EnvironmentName);
+                    configurationBuilder.AddConfigServer(hostingEnvironment.EnvironmentName, logFactory);
                 })
                 .UseStartup<Startup>();
     }

@@ -3,7 +3,6 @@ spring:
     name: counter
   cloud:
     config:
-      uri: ${config.server:http://localhost:9000}
       name: counterservice
       failfast: true
       retry:

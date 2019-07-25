@@ -31,9 +31,8 @@ namespace SteelToeBoot
         public void ConfigureServices(IServiceCollection services)
         {
             // Add Steeltoe Discovery Client service
-            //services.AddDiscoveryClient(Configuration);
-
-            //services.Configure<FetcherOptions>(Configuration);
+            services.AddDiscoveryClient(Configuration);
+            services.Configure<FetcherOptions>(Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -53,7 +52,7 @@ namespace SteelToeBoot
             app.UseHttpsRedirection();
             app.UseMvc();
             
-            //app.UseDiscoveryClient();
+            app.UseDiscoveryClient();
         }
     }
 }
