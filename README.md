@@ -51,6 +51,8 @@ configuration service is available and running.
 The url for the counter service via the gateway is 
 [http://localhost:8080/gateway/counterservice/count](http://localhost:8080/gateway/counterservice/count)
 
+The service is password protected (me/password) using the very basics of spring security and a hard coded password list.
+
 You can override the service names in the zuul config file.  You probably don't want to go this, but it can be useful 
 when you have name conflicts.
 
