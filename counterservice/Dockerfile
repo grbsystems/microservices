@@ -1,8 +1,8 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11
 
-RUN addgroup -S appgroup
-RUN adduser -S appuser -G appgroup
-USER appuser
+#RUN addgroup -S appgroup
+#RUN adduser -S appuser -G appgroup
+#USER appuser
 
 VOLUME /tmp
 ADD target/counterservice-0.0.2-SNAPSHOT.jar app.jar

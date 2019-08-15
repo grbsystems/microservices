@@ -5,8 +5,7 @@ WORKDIR /app
 COPY . ./
 RUN dotnet publish -c Release -o out
 
-EXPOSE 5000/tcp
-
+EXPOSE 80/tcp
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2

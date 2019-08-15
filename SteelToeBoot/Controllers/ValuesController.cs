@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 
 namespace SteelToeBoot.Controllers
 {
@@ -11,24 +13,35 @@ namespace SteelToeBoot.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        FetcherOptions MyOptions { get; set; }
+        private IOptionsSnapshot<ConfigServerData> IConfigServerData { get; set; }
 
+        private ConfigServerClientSettingsOptions ConfigServerClientSettingsOptions { get; set; }
+
+        private IConfigurationRoot Config { get; set; }
         
-        public ValuesController(IOptions<FetcherOptions> myOptions)
+        public ValuesController(IConfigurationRoot config, IOptionsSnapshot<ConfigServerData> configServerData, IOptions<ConfigServerClientSettingsOptions> confgServerSettings)
         {
-//            MyOptions = new FetcherOptions
-//            {
-//                BaseDataUri = "Hello",
-//                FetchInterval = new TimeSpan(0, 1, 0, 0)
-//            };
-            MyOptions = myOptions.Value;
+            if (configServerData != null)
+                IConfigServerData = configServerData;
+
+            // The settings used in communicating with the Spring Cloud Config Server
+            if (confgServerSettings != null)
+                ConfigServerClientSettingsOptions = confgServerSettings.Value;
+
+            Config = config;
         }
 
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] {MyOptions.BaseDataUri, MyOptions.FetchInterval.ToString()};
+            if (IConfigServerData != null && IConfigServerData.Value != null)
+            {
+                var data = IConfigServerData.Value;
+                return new string[] {data.baseDataUri, data.fetchInterval};
+            }
+            
+            return new string[] {"Not Set", "Not Set"};
         }
 
         // GET api/values/5

@@ -30,10 +30,19 @@ namespace SteelToeBoot
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add Steeltoe Discovery Client service
+            services.AddOptions();
             services.AddDiscoveryClient(Configuration);
-            services.Configure<FetcherOptions>(Configuration);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            // Optional: Adds ConfigServerClientOptions to service container
+            services.ConfigureConfigServerClientOptions(Configuration);
+
+            // Optional:  Adds IConfiguration and IConfigurationRoot to service container
+            services.AddConfiguration(Configuration);
+
+            // Add framework services.
+            services.AddMvc();
+
+            // Adds the configuration data POCO configured with data returned from the Spring Cloud Config Server
+            services.Configure<ConfigServerData>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

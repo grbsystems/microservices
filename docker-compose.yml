@@ -3,7 +3,7 @@ services:
   discoveryservice:
     build: discoveryservice
     image: ${REGISTRY}discoveryservice${TAG}
-    ports: 
+    ports:
       - "8761:8761"
 
   configurationservice:
@@ -14,31 +14,40 @@ services:
     depends_on:
       - "discoveryservice"
 
-  gatewayservice:
-    build: gatewayservice
-    image: ${REGISTRY}gatewayservice${TAG}
-    ports:
-      - "8080:8080"
-    depends_on:
-      - "discoveryservice"
-      - "configurationservice"
+#  gatewayservice:
+#    build: gatewayservice
+#    image: ${REGISTRY}gatewayservice${TAG}
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - "discoveryservice"
+#      - "configurationservice"
 
-  counterservice:
-    build: counterservice
-    image: ${REGISTRY}counterservice${TAG}
-    ports:
-      - "8000:8000"
-    depends_on:
-      - "discoveryservice"
-      - "gatewayservice"
-      - "configurationservice"
+  #counterservice:
+  #  build: counterservice
+  #  image: ${REGISTRY}counterservice${TAG}
+  #  ports:
+  #    - "8000:8000"
+  #  depends_on:
+  #    - "discoveryservice"
+  #    - "gatewayservice"
+  #    - "configurationservice"
 
-  steeltoeboot:
-    build: steeltoeboot
-    image: ${REGISTRY}steeltoeboot${TAG}
-    ports:
-      - "5000:80"
-    depends_on:
-      - "discoveryservice"
-      - "gatewayservice"
-      - "configurationservice"
+  #steeltoeboot:
+  #  build: steeltoeboot
+  #  image: ${REGISTRY}steeltoeboot${TAG}
+  #  ports:
+  #    - "5000:5000"
+  #  depends_on:
+  #    - "discoveryservice"
+  #    - "gatewayservice"
+  #    - "configurationservice"
+  #      - "counterservice"
+
+networks:
+  default:
+    external:
+      name: micro-net
+
+
+
