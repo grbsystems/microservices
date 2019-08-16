@@ -9,5 +9,4 @@ management:
 counter:
   prefixMessage: "Hello World: "
 
-server:
-  port: 8000
+

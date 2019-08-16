@@ -10,3 +10,6 @@ $global:gateway.Kill()
 
 $global:counter
 $global:counter.Kill()
+
+$global:steelboot
+$global:steelboot.Kill()

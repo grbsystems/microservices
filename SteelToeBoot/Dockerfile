@@ -1,14 +1,8 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
-WORKDIR /app
+FROM ubuntu:cosmic
+RUN apt-get install libssl1.0.0:amd64
 
-# Copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -o out
+COPY ./outlinux ./SteelToeBoot
 
 EXPOSE 80/tcp
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
-WORKDIR /app
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "SteelToeBoot.dll"]
+ENTRYPOINT ["/bin/bash"]

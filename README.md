@@ -80,7 +80,13 @@ The service returns the 2 values in the configuration file on the
 or on the [http://localhost:8080/gateway/steeltoeboot/api/values](http://localhost:8080/gateway/steeltoeboot/api/values) 
 endpoint if you are bypassing the gateway and just running locally.   
 
-I would note that here is no docker image for the .NET code as yet - this will follow soon.
+To build the dotnet core as an executable [Win or linux as appropriate]
+
+```
+dotnet publish .\SteelToeBoot.csproj --configuration Debug --runtime win10-x64 --self-contained --output out
+dotnet publish .\SteelToeBoot.csproj --configuration Debug --runtime linux-x64 --self-contained --output outlinux
+```
+
 
 # Running in Docker considerations
 
