@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +14,9 @@ namespace SteelToeBoot
 {
     public class Program
     {
+        static LoggerFactory logFactory = new LoggerFactory();
+
+
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
@@ -20,11 +24,18 @@ namespace SteelToeBoot
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((webHostBuilderContext, configurationBuilder) => {
-                    
+                .ConfigureAppConfiguration((webHostBuilderContext, configurationBuilder) =>
+                {
                     var hostingEnvironment = webHostBuilderContext.HostingEnvironment;
-                    configurationBuilder.AddConfigServer(hostingEnvironment.EnvironmentName);
+                    configurationBuilder.AddConfigServer(hostingEnvironment.EnvironmentName, logFactory);
                 })
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .ConfigureLogging((hostingContext, logging) =>
+                {
+                    logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                    logging.AddConsole();
+                    logging.AddDebug();
+                })
+                .AddConfigServer();
     }
 }
