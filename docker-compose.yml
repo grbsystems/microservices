@@ -29,21 +29,21 @@ services:
       - "gatewayservice"
       - "configurationservice"
 
-#  steeltoeboot:
-#    build: steeltoeboot
-#    image: ${REGISTRY}steeltoeboot${TAG}
-#    ports:
-#      - "5000:80"
-#    depends_on:
-#      - "discoveryservice"
-#      - "gatewayservice"
-#      - "configurationservice"
-#      - "counterservice"
+  steeltoeboot:
+    build: steeltoeboot
+    image: ${REGISTRY}steeltoeboot${TAG}
+    ports:
+      - "5000:80"
+    depends_on:
+      - "discoveryservice"
+      - "gatewayservice"
+      - "configurationservice"
+      - "counterservice"
 
-networks:
-  default:
-    external:
-      name: micro-net
+#networks:
+#  default:
+#    external:
+#      name: micro-net
 
 
 
