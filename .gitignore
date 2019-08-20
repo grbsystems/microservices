@@ -23,6 +23,9 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+[Oo]ut/
+[Oo]utlinux
+
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -346,3 +349,4 @@ target/
 .classpath
 .settings/
 *.iml
+*.tar
