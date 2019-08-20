@@ -24,8 +24,14 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Oo]ut/
+<<<<<<< HEAD
 [Oo]utlinux
 
+=======
+[Oo]utLinux/
+
+*.tar
+>>>>>>> 4aaf99821f6788e9edf07212eacb04abd1d2b77c
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

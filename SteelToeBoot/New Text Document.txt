@@ -1,0 +1,39 @@
+  "eureka": {
+    "client": {
+      "serviceUrl": "http://discoveryservice:8761/eureka",
+      "shouldFetchRegistry": false,
+      "ValidateCertificates": false
+    },
+    "instance": {
+      "port": 80
+    }
+  },
+  "spring": {
+    "application": {
+      "name": "steeltoeboot"
+    },
+    "cloud": {
+      "config": {
+        "uri": "http://config:9000",
+        "failfast": true,
+        "discovery": {
+          "enabled": true,
+          "serviceId": "config"
+        }
+      }
+    }
+  }
+  
+  
+  
+  ,
+      "cloud": {
+        "config": {
+          "uri": "http://config:9000",
+          "failfast": true,
+          "discovery": {
+            "enabled": true,
+            "serviceId": "config"
+          }
+        }
+      }
