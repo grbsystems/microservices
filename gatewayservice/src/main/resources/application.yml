@@ -4,3 +4,34 @@ management:
       exposure:
         include: "*"
 
+zuul:
+  sensitiveHeaders: Cookie,Set-Cookie
+  server:
+    port: 8080
+  prefix: /gateway
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://discoveryservice:8761/eureka
+  ignored-services: '*'
+#  routes:
+#    counter:
+#      path: /cs/**
+#      serviceId: counterservice
+#      steeltoe:
+#        path: /st/**
+#        serviceId: steeltoeboot
+
+#spring data mongo
+spring:
+  application:
+    name: zuul
+  data:
+    mongodb:
+#      authentication-database: admin
+#      username: root
+#      password: root
+      database: test
+      port: 27017
+      host: localhost
+
