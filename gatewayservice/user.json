@@ -1,13 +1,1 @@
-{
-    "email": "user@domain.com",
-    "name": "John",
-    "lastname": "Doe",
-    "password": "password",
-    "isLocked": "false",
-    "isExpired": "false",
-    "isEnabled": "true",
-    "role": [
-        { "id": "1",
-        "role": "admin"}
-    ]
-}
+{ "email": "user@domain.com", "name": "John", "lastname": "Doe", "password": "password", "isLocked": "false", "isExpired": "false", "isEnabled": "true", "role": [ { "id": "1", "role": "admin"} ] }

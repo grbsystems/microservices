@@ -13,7 +13,7 @@ zuul:
     client:
       serviceUrl:
         defaultZone: http://discoveryservice:8761/eureka
-  ignored-services: '*'
+#  ignored-services: '*'
 #  routes:
 #    counter:
 #      path: /cs/**

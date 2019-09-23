@@ -89,6 +89,11 @@ dotnet publish .\SteelToeBoot.csproj --configuration Debug --runtime win10-x64 -
 dotnet publish .\SteelToeBoot.csproj --configuration Debug --runtime linux-x64 --self-contained --output outlinux
 ```
 
+# Setting up Mongo to support Users and JWT
+
+```
+mongoimport --db test --collection user --file user.json
+```
 
 # Running in Docker considerations
 
@@ -97,6 +102,8 @@ network.  Not that you can avoid using the docker network and just connect to th
 containers typically get deployed.
 
 These generally all related to service discovery and communication. 
+
+
 
 
 
